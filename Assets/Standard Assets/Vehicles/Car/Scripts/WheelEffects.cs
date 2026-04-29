@@ -45,7 +45,9 @@ namespace UnityStandardAssets.Vehicles.Car
         public void EmitTyreSmoke()
         {
             skidParticles.transform.position = transform.position - transform.up*m_WheelCollider.radius;
-            skidParticles.Emit(1, 1);
+            ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
+            emitParams.position = skidParticles.transform.position;
+            skidParticles.Emit(emitParams, 1);
             if (!skidding)
             {
                 StartCoroutine(StartSkidTrail());

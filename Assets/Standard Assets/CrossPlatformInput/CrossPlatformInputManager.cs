@@ -19,7 +19,6 @@ namespace UnityStandardAssets.CrossPlatformInput
                 return Input.GetAxis(axisName);
             }
 
-            string mobileAxis = "Mouse X";
             if (axisName == "Horizontal")
             {
                 return Input.GetAxis("Horizontal");
