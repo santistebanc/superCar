@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 public class timer : MonoBehaviour
 {
-    public Text timerLabel;
-    public Text lapsLabel;
-    public Text lapscounter;
+    public TextMeshProUGUI timerLabel;
+    public TextMeshProUGUI lapsLabel;
+    public TextMeshProUGUI lapscounter;
 
-    public Text entertostart;
-    public Text finallaptext;
+    public TextMeshProUGUI entertostart;
+    public TextMeshProUGUI finallaptext;
 
     public GameObject place;
     public AudioSource[] beeps;
@@ -29,7 +30,7 @@ public class timer : MonoBehaviour
 
     public int wincount = 0;
 
-    public Font myfont;
+    public TMP_FontAsset myfont;
 
     public CanvasRenderer cr;
 
@@ -231,15 +232,18 @@ public class timer : MonoBehaviour
         GameObject newGO = new GameObject("myTextGO");
         newGO.transform.SetParent(cr.transform);
 
-        Text myText = newGO.AddComponent<Text>();
+        TextMeshProUGUI myText = newGO.AddComponent<TextMeshProUGUI>();
         Vector3 pos = new Vector3(35, 145 - 20 * wincount, 0);
         myText.transform.localPosition = pos;
         wincount++;
-        myText.font = myfont;
-        myText.fontStyle = FontStyle.Bold;
-        myText.alignment = TextAnchor.UpperRight;
+        if (myfont != null)
+        {
+            myText.font = myfont;
+        }
+        myText.fontStyle = FontStyles.Bold;
+        myText.alignment = TextAlignmentOptions.Right;
         myText.color = color;
-        myText.text = (wincount)+ ".   " + string.Format("{0:00} : {1:00} : {2:00}", minutes, seconds, fraction);;
+        myText.text = (wincount)+ ".   " + string.Format("{0:00} : {1:00} : {2:00}", minutes, seconds, fraction);
     }
 
 }

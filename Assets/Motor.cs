@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets.Vehicles.Car;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Motor : MonoBehaviour {

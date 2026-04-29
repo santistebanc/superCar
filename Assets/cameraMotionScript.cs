@@ -13,6 +13,12 @@ public class cameraMotionScript : MonoBehaviour {
     public int mode = 0;
 
     private Vector3 rotationVector;
+    private Camera _camera;
+
+    void Awake()
+    {
+        _camera = GetComponent<Camera>();
+    }
 
     void LateUpdate () {
         switch(mode)
@@ -57,6 +63,9 @@ public class cameraMotionScript : MonoBehaviour {
         {
             acc = carrigidbody.velocity.magnitude;
         }
-        GetComponent<Camera>().fieldOfView = DefaultFOV + acc*zoomRacio;
+        if (_camera != null)
+        {
+            _camera.fieldOfView = DefaultFOV + acc*zoomRacio;
+        }
     }
 }
